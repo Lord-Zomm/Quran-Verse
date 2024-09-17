@@ -140,7 +140,7 @@ class App extends React.Component {
 
     fetchVerse = () => {
         const { verseId } = this.state;
-        axios.get(`http://api.alquran.cloud/v1/ayah/${verseId}/en.asad`)
+        axios.get(`https://api.alquran.cloud/v1/ayah/${verseId}/en.asad`)
         .then((response) => {
             const { text } = response.data.data; // Adjust based on actual API response
 
