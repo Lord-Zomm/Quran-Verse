@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+#root, html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./images/Desert_Valley.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.card {
+    background-color: rgba(180, 109, 39, 0.0);
+    width: 40%; 
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 25px;
+    padding: 2%;
+    box-shadow: 0px 0px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    height: 580 px;
+    font-size: 22px;
+    font-family: "Tinos", serif;
+    margin-bottom: -0px; /* Adjust this value to increase or decrease space */
+}
+
+.verse {
+    display: flex;
+    align-items: center;
+    height: 580 px;
+    font-size: 22px;
+    font-family: "Tinos", serif;
+    margin-bottom: -50px; /* Adjust this value to increase or decrease space */
+}
+
+.button-container {
+    display: flex;
+    align-items: center; /* Ensure vertical alignment of buttons */
+    gap: 10px; /* Adjust gap between buttons as needed */
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.button {
+    position: relative;
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 200px;
+    width: 210px;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 1px solid rgba(0, 0, 0, 0.0);
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  .random-button {
+    height: 200px; /* Smaller height for the random button */
+    width: 80px; /* Smaller width for the random button */
+    font-size: 14px; /* Optional: adjust font size if needed */
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+    
+  .button span {
+    color: black;
+    font-size: 15px;
+    font-weight: 1000;
+    letter-spacing: 0.7px;
+    font-family: "Tinos", serif;
   }
-  to {
-    transform: rotate(360deg);
+    
+  .button:hover {
+    animation: rotate 0.7s ease-in-out both;
   }
-}
+    
+  .button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+    
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-1deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(.5deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+    
+  @keyframes storm {
+    0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+    25% {
+      transform: translate3d(.5px, 0, 0) translateZ(0);
+    }
+    50% {
+      transform: translate3d(-.25px, 0, 0) translateZ(0);
+    }
+    75% {
+      transform: translate3d(.125px, 0, 0) translateZ(0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  }  
+  
+  @media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+        height: 30%;
+    }
+  }
