@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Quran-Verse/static/css/main.5191188f.css",
-    "main.js": "/Quran-Verse/static/js/main.eddb3237.js",
+    "main.js": "/Quran-Verse/static/js/main.de96aac8.js",
     "static/media/Desert_Valley.png": "/Quran-Verse/static/media/Desert_Valley.37747f37eb55c88d98aa.png",
     "index.html": "/Quran-Verse/index.html",
     "main.5191188f.css.map": "/Quran-Verse/static/css/main.5191188f.css.map",
-    "main.eddb3237.js.map": "/Quran-Verse/static/js/main.eddb3237.js.map"
+    "main.de96aac8.js.map": "/Quran-Verse/static/js/main.de96aac8.js.map"
   },
   "entrypoints": [
     "static/css/main.5191188f.css",
-    "static/js/main.eddb3237.js"
+    "static/js/main.de96aac8.js"
   ]
 }
