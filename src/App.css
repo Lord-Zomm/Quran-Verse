@@ -14,12 +14,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
 }
 
 .card {
     background-color: rgba(180, 109, 39, 0.0);
-    width: 40%; 
+    width: 40%;
     height: 30%;
     display: flex;
     justify-content: center;
@@ -77,7 +77,7 @@
     width: 80px; /* Smaller width for the random button */
     font-size: 14px; /* Optional: adjust font size if needed */
 }
-    
+
   .button span {
     color: black;
     font-size: 15px;
@@ -85,16 +85,16 @@
     letter-spacing: 0.7px;
     font-family: "Tinos", serif;
   }
-    
+
   .button:hover {
     animation: rotate 0.7s ease-in-out both;
   }
-    
+
   .button:hover span {
     animation: storm 0.7s ease-in-out both;
     animation-delay: 0.06s;
   }
-    
+
   @keyframes rotate {
     0% {
       transform: rotate(0deg) translate3d(0, 0, 0);
@@ -112,7 +112,7 @@
       transform: rotate(0deg) translate3d(0, 0, 0);
     }
   }
-    
+
   @keyframes storm {
     0% {
       transform: translate3d(0, 0, 0) translateZ(0);
@@ -129,8 +129,8 @@
     100% {
       transform: translate3d(0, 0, 0) translateZ(0);
     }
-  }  
-  
+  }
+
   @media only screen and (max-width: 600px) {
     .card {
         width: 80%;
