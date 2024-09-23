@@ -1,19 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-
 import './App.css';
 
 class App extends React.Component {
-
     minVerseId = 1; // Minimum valid verse ID (adjust as necessary)
     maxVerseId = 6236; // Maximum valid verse ID (adjust as necessary)
 
     // Function to get a random verse ID within a valid range
     getRandomVerseId = () => {
-        const minVerseId = 1; // Minimum valid verse ID (adjust as necessary)
-        const maxVerseId = 6236; // Maximum valid verse ID (adjust as necessary)
-
-        return Math.floor(Math.random() * (maxVerseId - minVerseId + 1)) + minVerseId;
+        return Math.floor(Math.random() * (this.maxVerseId - this.minVerseId + 1)) + this.minVerseId;
     }
 
     state = {
@@ -26,37 +21,42 @@ class App extends React.Component {
 
     componentDidMount() {
         this.fetchVerse();
+        // Add event listener for keydown
+        window.addEventListener('keydown', this.handleKeyDown);
+    }
+
+    componentWillUnmount() {
+        // Remove event listener when the component unmounts
+        window.removeEventListener('keydown', this.handleKeyDown);
     }
 
     fetchVerse = () => {
         const { verseId } = this.state;
         axios.get(`https://api.alquran.cloud/v1/ayah/${verseId}/en.pickthall`)
-        .then((response) => {
-            const { text, surah, number } = response.data.data; // Adjust based on actual API response
-
-            this.setState({ 
-                verse: text,
-                chapter: surah.number, // Assuming 'surah' has a 'number' property
-                chapterName: surah.englishName, // Assuming 'surah' has a 'englishName' property
-                verseNumber: number
+            .then((response) => {
+                const { text, surah, number } = response.data.data;
+                this.setState({ 
+                    verse: text,
+                    chapter: surah.number,
+                    chapterName: surah.englishName,
+                    verseNumber: number
+                });
+            })
+            .catch((error) => {
+                console.log(error);
             });
-        })
-        .catch((error) => {
-            console.log(error);
-        })
     }
 
     handleNextVerse = () => {
         this.setState(prevState => {
             const nextVerseId = prevState.verseId + 1;
-            // Check if the next verse ID is within the valid range
             if (nextVerseId <= this.maxVerseId) {
                 return { verseId: nextVerseId };
             }
-            return null; // No update if the verse ID is out of range
+            return null;
         }, () => {
             if (this.state.verseId <= this.maxVerseId) {
-                this.fetchVerse(); // Fetch the new verse after updating the verseId
+                this.fetchVerse();
             }
         });
     }
@@ -64,24 +64,31 @@ class App extends React.Component {
     handlePreviousVerse = () => {
         this.setState(prevState => {
             const prevVerseId = prevState.verseId - 1;
-            // Check if the previous verse ID is within the valid range
             if (prevVerseId >= this.minVerseId) {
                 return { verseId: prevVerseId };
             }
-            return null; // No update if the verse ID is out of range
+            return null;
         }, () => {
             if (this.state.verseId >= this.minVerseId) {
-                this.fetchVerse(); // Fetch the new verse after updating the verseId
+                this.fetchVerse();
             }
         });
     }
 
     handleRandomVerse = () => {
         this.setState(prevState => ({
-            verseId: this.getRandomVerseId() // Get a new random verse ID
+            verseId: this.getRandomVerseId()
         }), () => {
-            this.fetchVerse(); // Fetch the new verse after updating the verseId
+            this.fetchVerse();
         });
+    }
+
+    handleKeyDown = (e) => {
+        if (e.key === 'ArrowRight') {
+            this.handleNextVerse();
+        } else if (e.key === 'ArrowLeft') {
+            this.handlePreviousVerse();
+        }
     }
 
     render() {
